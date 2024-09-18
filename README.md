@@ -20,9 +20,8 @@ filters:
   - type: ruby
     ruby_code: |
       puts "Hello from ruby"
-      # Add a new field 'greeting' based on 'name'
-      record['greeting'] = "Hello, #{record['name']}!"
-      # Modify the 'age' field
+
+      # Modify the 'a' field
       record['a'] = record['a'] + "b"
       # Return the modified record
       record
