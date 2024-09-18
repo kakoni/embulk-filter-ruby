@@ -1,6 +1,7 @@
 # TruffleRuby filter for Embulk
 
-Uses TruffleRuby to run filter functions
+Uses TruffleRuby to run filter functions. Use 
+JDK from https://github.com/graalvm/graalvm-ce-builds/releases to run this
 
 ## Overview
 
