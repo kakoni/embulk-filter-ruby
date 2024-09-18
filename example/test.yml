@@ -1,0 +1,21 @@
+in:
+  type: file
+  path_prefix: ./example/file.csv
+  parser:
+    type: csv
+    skip_header_lines: 1
+    columns:
+      - {name: a,  type: string}
+      - {name: b,  type: string}
+      - {name: c,  type: string}
+filters:
+  - type: ruby
+    ruby_code: |
+      puts "Hello from ruby, record is #{record}"
+      # Modify the 'a' field
+      record['a'] = record['a'] + "b"
+      record['c'] = 5
+      # Return the modified record
+      record
+out:
+  type: stdout

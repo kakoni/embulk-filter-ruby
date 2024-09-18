@@ -1,0 +1,60 @@
+plugins {
+    id "java-library"
+    id "org.embulk.embulk-plugins" version "0.7.0"
+    id "maven-publish"
+    id "signing"
+}
+
+group = "org.embulk.filter"
+version = "0.2.0"
+description = "foo"
+
+sourceCompatibility = 8
+targetCompatibility = 8
+compileJava.options.encoding = 'UTF-8'
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+javadoc {
+    options.charSet = 'UTF-8'
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+embulkPlugin {
+    mainClass = "org.embulk.filter.RubyFilterPlugin"
+    category = "filter"
+    type = "ruby"
+}
+
+dependencies {
+    compileOnly "org.embulk:embulk-spi:0.11"
+
+    implementation "org.embulk:embulk-util-config:0.5.0"
+    implementation "org.embulk:embulk-util-file:0.2.0"
+    implementation "org.embulk:embulk-util-timestamp:0.3.0"
+
+    implementation 'org.graalvm.polyglot:polyglot:24.1.0'
+    runtimeOnly 'org.graalvm.polyglot:ruby-community:24.1.0'
+
+    testImplementation "junit:junit:4.13.2"
+    testImplementation "org.embulk:embulk-spi:0.11"
+    testImplementation "org.embulk:embulk-core:0.11.0"
+    testImplementation "org.embulk:embulk-deps:0.11.0"
+    testImplementation "org.embulk:embulk-junit4:0.11.0"
+}
+
+gem {
+  authors       = ["kakoni"]
+  summary       = "[Experimenetal ruby filter]"
+  description   = "[Ruby filter]"
+  email         = ["kakoni@gmail.com"]
+  licenses      = ["MIT"]
+  homepage      = ""
+}
